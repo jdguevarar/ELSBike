@@ -24,62 +24,62 @@ void setup() {
   pinMode(17, INPUT);
   pinMode(18, INPUT);
   pinMode(19, INPUT);
+  digitalWrite(7, HIGH);
+  digitalWrite(8, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(11, HIGH);
+  digitalWrite(12, HIGH);
+
 
 }
 
 void loop() {
             if(bicis.available()>0){
-              m =bicis.read();
-              //Serial.print(m);
+              m =bicis.read();     
 
               switch (m){
 
-              case '0':{
-                  //char c[sizeof(nbics)/sizeof(int)];  
-                  while(i<=(sizeof(c)-1)){
-                    c[i]=digitalRead(i+14) +'0';
-                    bicis.write(c[i]);
-                    delay(200);   
-                    i++;
-                  }
-                  i=0;
-              }break;
-
-              case '1':{                  
-                  digitalWrite(7, HIGH);
-                  delay(4000);
-                  digitalWrite(7, LOW);
+                case '0':{
+                    //char c[sizeof(nbics)/sizeof(int)];  
+                    while(i<=(sizeof(c)-1)){
+                      c[i]=digitalRead(i+14) +'0';
+                      bicis.write(c[i]);
+                      delay(200);   
+                      i++;
+                    }
+                    i=0;
                 }break;
-                
-                case '2':{
-                  digitalWrite(8, HIGH);
-                  delay(4000);
-                  digitalWrite(8, LOW);
-                }break;
-                
-                case '3':{
-                  digitalWrite(9, HIGH);
-                  delay(4000);
-                  digitalWrite(9, LOW);
-                }break;
-                
-                case '4':{
-                  digitalWrite(10, HIGH);
-                  delay(4000);
-                  digitalWrite(10, LOW);
-                }break;
-
-                case '5':{
-                  digitalWrite(11, HIGH);
-                  delay(4000);
-                  digitalWrite(11, LOW);
-                }break;
-
-                case '6':{
-                  digitalWrite(12, HIGH);
-                  delay(4000);
-                  digitalWrite(12, LOW);
-                }break;                            
-            }
-            }                                    
+  
+                case '1':{
+                    if(digitalRead(7)==LOW) digitalWrite(7, HIGH);
+                    else if(digitalRead(7)==HIGH) digitalWrite(7, LOW);
+                  }break;
+                  
+                  case '2':{
+                    if(digitalRead(8)==LOW) digitalWrite(8, HIGH);
+                    else if(digitalRead(8)==HIGH) digitalWrite(8, LOW);                
+                  }break;
+                  
+                  case '3':{
+                    if(digitalRead(9)==LOW) digitalWrite(9, HIGH);
+                    else if(digitalRead(9)==HIGH) digitalWrite(9, LOW);
+                  }break;
+                  
+                  case '4':{
+                    if(digitalRead(10)==LOW) digitalWrite(10, HIGH);
+                    else if(digitalRead(10)==HIGH) digitalWrite(10, LOW);                  
+                  }break;
+  
+                  case '5':{
+                    if(digitalRead(11)==LOW) digitalWrite(11, HIGH);
+                    else if(digitalRead(11)==HIGH) digitalWrite(11, LOW);                  
+                  }break;
+  
+                  case '6':{
+                   if(digitalRead(12)==LOW) digitalWrite(12, HIGH);
+                    else if(digitalRead(12)==HIGH) digitalWrite(12, LOW);                  
+                  }break;                            
+              }
+            }                        
 }
